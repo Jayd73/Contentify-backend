@@ -11,3 +11,4 @@ class UserPostList(generics.ListCreateAPIView):
 class UserPostDetail(generics.RetrieveDestroyAPIView):
     queryset = UserPost.objects.all()
     serializer_class = UserPostSerializer
+

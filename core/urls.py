@@ -4,13 +4,18 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('', include('user_posts.urls', namespace = 'user_posts')),
-    path('api/', include('contentify_api.urls', namespace = 'contentify_api')),
+    path('api/channel/', include('contentify_api.channels.urls', namespace = 'channels')),
+    path('api/post/', include('contentify_api.user_posts.urls', namespace = 'user_posts')),
     path('api/user/', include('contentify_api.users.urls', namespace='users')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
