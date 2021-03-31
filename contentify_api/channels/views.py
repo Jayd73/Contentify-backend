@@ -19,19 +19,24 @@ class ChannelDetails(generics.RetrieveDestroyAPIView):
     serializer_class = ChannelSerializer
 
 class ChannelDetailsFromCurrUser(APIView):
-    def post(self, request, format = None):
+    def get(self, request, format = None):
         user_channel = None
-        for channel in Channel.objects.all():
-            if channel.user.username == request.data['username']:
-                user_channel = channel
-                break
-        serializer = ChannelSerializer(user_channel)
+        serializer = ChannelSerializer(request.user.channel)   
         return Response(serializer.data)
 
 class UserAvatarUpload(generics.UpdateAPIView):
     parser_classes = [MultiPartParser, FormParser]
     serializer_class = ChannelSerializer
     queryset = Channel.objects.all()
+
+class ChannelBannerUpload(generics.UpdateAPIView):
+    parser_classes = [MultiPartParser, FormParser]
+    serializer_class = ChannelSerializer
+    queryset = Channel.objects.all()
+
+
+
+
     # def put(self, request, pk, format=None):
     #     print(request.data)
     #     obj = User.objects.get(pk=pk).channel

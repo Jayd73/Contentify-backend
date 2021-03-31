@@ -12,3 +12,4 @@ class ChannelSerializer(serializers.ModelSerializer):
     class Meta:
         fields = "__all__"
         model = Channel
+        depth = 1
