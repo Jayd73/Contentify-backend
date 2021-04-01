@@ -17,6 +17,7 @@ class Channel(models.Model):
     banner = models.ImageField(_("BannerImage"), upload_to = upload_to_b, default='channel/banner/defaultBanner.jpg')
     avatar = models.ImageField(_("Avatar"), upload_to = upload_to, default='channel/avatar/defaultAvatar.jpg')
     created_date = models.DateTimeField(default=now, editable=False)
+    slug = models.SlugField(default = "channel_name",max_length = 250, null = False, blank = False)
 
     def __str__(self):
         return self.user.username

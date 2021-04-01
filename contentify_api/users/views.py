@@ -8,6 +8,8 @@ from channel.models import Channel
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
 
+def get_uname_slug(uname):
+    return uname.replace(" ","_")
 
 class UserCreate(APIView):
     permission_classes = [AllowAny]
@@ -17,7 +19,7 @@ class UserCreate(APIView):
         if serializer.is_valid():
             user = serializer.save()
             if user:
-                Channel(user = user).save()
+                Channel(user = user, slug = get_uname_slug(user.username)).save()
                 json = serializer.data
                 return Response(json, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
