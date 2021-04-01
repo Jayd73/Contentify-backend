@@ -34,6 +34,10 @@ class ChannelBannerUpload(generics.UpdateAPIView):
     serializer_class = ChannelSerializer
     queryset = Channel.objects.all()
 
+class ChannelAboutChange(generics.UpdateAPIView):
+    serializer_class = ChannelSerializer
+    queryset = Channel.objects.all()
+
 
 
 
