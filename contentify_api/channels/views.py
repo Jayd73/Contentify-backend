@@ -20,7 +20,6 @@ class ChannelDetails(generics.RetrieveDestroyAPIView):
 
 class ChannelDetailsFromCurrUser(APIView):
     def get(self, request, format = None):
-        user_channel = None
         serializer = ChannelSerializer(request.user.channel)   
         return Response(serializer.data)
 
