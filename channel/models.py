@@ -18,6 +18,7 @@ class Channel(models.Model):
     avatar = models.ImageField(_("Avatar"), upload_to = upload_to, default='channel/avatar/defaultAvatar.jpg')
     created_date = models.DateTimeField(default=now, editable=False)
     slug = models.SlugField(default = "channel_name",max_length = 250, null = False, blank = False)
+    followedChannels = models.ManyToManyField("self", symmetrical=False, blank= True)
 
     def __str__(self):
         return self.user.username
