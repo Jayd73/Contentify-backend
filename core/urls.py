@@ -13,7 +13,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('', include('user_posts.urls', namespace = 'user_posts')),
     path('api/channel/', include('contentify_api.channels.urls', namespace = 'channels')),
-    path('api/post/', include('contentify_api.user_posts.urls', namespace = 'user_posts')),
+    path('api/userpost/', include('contentify_api.user_posts.urls', namespace = 'user_posts')),
     path('api/user/', include('contentify_api.users.urls', namespace='users')),
     
 ]

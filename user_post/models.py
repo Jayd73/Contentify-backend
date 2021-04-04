@@ -1,12 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
+from channel.models import Channel
+
+def upload_to(instance, filename):
+    return 'channel/userpostsimg/{filename}'.format(filename = filename)
 
 class UserPost(models.Model):
     content = models.TextField()
-    #slug = models.SlugField(max_length=250, unique_for_date='published')
+    image = models.ImageField(_("UserPostImage"), upload_to = upload_to, null = True)
+    slug = models.SlugField(max_length=250, unique=True, default="channel_name")
     published = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User, on_delete = models.CASCADE, related_name='user_posts')
+    channel = models.ForeignKey(Channel, on_delete = models.CASCADE, null = True)
 
     class Meta:
         ordering = ('-published',)
