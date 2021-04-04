@@ -6,3 +6,5 @@ class UserPostSerializer(serializers.ModelSerializer):
     class Meta:
         fields = "__all__"
         model = UserPost
+        depth = 2
+        

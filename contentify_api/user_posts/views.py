@@ -20,7 +20,7 @@ class UserPostList(generics.ListCreateAPIView):
 class SingleUserPostList(APIView):
     def get(self, request, pk ,format=None):
         user_channel = get_object_or_404(Channel, id = pk)
-        serializer = UserPostSerializer(user_channel.userpost_set.all(), many = True)
+        serializer = UserPostSerializer(user_channel.userpost_set.all(), many = True, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 class UserPostDetail(generics.RetrieveAPIView):
