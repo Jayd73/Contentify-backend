@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from django.utils.timezone import now
 
+# from multimedia.models import Video           #circular import error
+
 
 def upload_to(instance, filename):
     return 'channel/avatar/{filename}'.format(filename = filename)
@@ -19,6 +21,7 @@ class Channel(models.Model):
     created_date = models.DateTimeField(default=now, editable=False)
     slug = models.SlugField(default = "channel_name",max_length = 250, null = False, blank = False)
     followedChannels = models.ManyToManyField("self", symmetrical=False, blank= True)
+    # liked_videos = models.ManyToManyField(Video, blank= True, null=True)
 
     def __str__(self):
         return self.user.username

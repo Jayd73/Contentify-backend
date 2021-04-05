@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'contentify_api',
     'user_post',
     'channel',
+    'multimedia',
+    'comment'
 ]
 
 MIDDLEWARE = [

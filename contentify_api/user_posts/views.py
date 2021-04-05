@@ -44,12 +44,6 @@ class CreateUserPost(generics.CreateAPIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class EditUserPost(generics.UpdateAPIView):
-    # permission_classes = [permissions.IsAuthenticated]
-    serializer_class = UserPostSerializer
-    queryset = UserPost.objects.all()
-
-
 class DeleteUserPost(generics.RetrieveDestroyAPIView):
     # permission_classes = [permissions.IsAuthenticated]
     serializer_class = UserPostSerializer
