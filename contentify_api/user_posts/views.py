@@ -27,6 +27,14 @@ class UserPostDetail(generics.RetrieveAPIView):
     queryset = UserPost.objects.all()
     serializer_class = UserPostSerializer
 
+
+class UserPostFromSlug(generics.RetrieveAPIView):
+    serializer_class = UserPostSerializer
+    def get_object(self, queryset=None, **kwargs):
+        item = self.kwargs.get('pk')
+        return get_object_or_404(Channel, slug=item)
+
+
 class CreateUserPost(generics.CreateAPIView):
     # permission_classes = [permissions.IsAuthenticated]
     parser_classes = [MultiPartParser, FormParser]

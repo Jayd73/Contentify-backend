@@ -35,7 +35,7 @@ class AddNewVideo(generics.CreateAPIView):
         serializer = VideoSerializer(data=request.data)
         if serializer.is_valid():
             #change id to request.user.channel.id
-            parent_channel = get_object_or_404(Channel, id = request.user.channel.id) #request.user.channel.id
+            parent_channel = get_object_or_404(Channel, id = 8) #request.user.channel.id
             serializer.validated_data["channel"] = parent_channel
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
