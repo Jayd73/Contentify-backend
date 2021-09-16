@@ -5,6 +5,7 @@ Contentify is about offering an online sharing platform for digital content like
 podcasts, music, audiobooks, etc. where creators can create their content and post it on the website for other people to view, listen and share.
 
 Web App Screenshots can be viewwd at:
+
 https://drive.google.com/drive/folders/1x1vhmOk6m3GNsrx02wwxv_gHAc9b_sIH?usp=sharing
 
 # Contentify-backend
